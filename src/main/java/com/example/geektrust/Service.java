@@ -1,28 +1,41 @@
 package com.example.geektrust;
 
 public class Service {
-    public String getServiceName() {
-        return serviceName;
-    }
-
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
-    }
-
     public Plan getPlan() {
         return plan;
     }
+    public Service()
+    {
 
-    public void setPlan(Plan plan) {
+    }
+    public  Plan getPlanByName(String name)
+    {
+        switch(name)
+        {
+            case "MUSIC-FREE":
+            case "VIDEO-FREE":
+            case "PODCAST-FREE":
+                return new Plan(null,1,0);
+            case "MUSIC-PERSONAL":
+            case "PODCAST-PERSONAL":
+                return new Plan(null,1,100);
+            case "MUSIC-PREMIUM":
+                return new Plan(null,3,250);
+            case "VIDEO-PERSONAL":
+                return new Plan(null,1,200);
+            case "VIDEO-PREMIUM":
+                return new Plan(null,3,500);
+            case "PODCAST-PREMIUM":
+                return new Plan(null,3,300);
+            default:
+                return null;
+        }
+    }
+
+    public Service(Plan plan) {
         this.plan = plan;
     }
 
-    public Service(String serviceName, Plan plan) {
-        this.serviceName = serviceName;
-        this.plan = plan;
-    }
-
-    private String serviceName;
-    private Plan plan;
+    private  Plan plan;
 
 }

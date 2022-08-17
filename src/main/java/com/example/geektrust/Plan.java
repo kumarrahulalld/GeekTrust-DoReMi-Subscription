@@ -1,5 +1,6 @@
 package com.example.geektrust;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Plan {
@@ -7,45 +8,30 @@ public class Plan {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
     public int getValidDuration() {
         return validDuration;
-    }
-
-    public void setValidDuration(int validDuration) {
-        this.validDuration = validDuration;
     }
 
     public int getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
-    }
-
-    public String getPlanName() {
-        return planName;
-    }
-
-    public void setPlanName(String planName) {
-        this.planName = planName;
-    }
-
-    public Plan(Date endDate, int validDuration, int cost, String planName) {
+    public Plan(Date endDate, int validDuration, int cost) {
         this.endDate = endDate;
         this.validDuration = validDuration;
         this.cost = cost;
-        this.planName = planName;
+    }
+    public void updateExpiryDate(Date date,int months)
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MONTH, months);
+        this.endDate=cal.getTime();
     }
 
-    private Date endDate;
-    private int validDuration;
-    private int cost;
-    private String planName;
+    private  Date endDate;
+    private final int validDuration;
+    private final int cost;
 
 
 }

@@ -5,16 +5,21 @@ public class TopUp {
         return topUpName;
     }
 
-    public void setTopUpName(String topUpName) {
-        this.topUpName = topUpName;
-    }
-
     public int getCostPerMonth() {
         return costPerMonth;
     }
 
-    public void setCostPerMonth(int costPerMonth) {
-        this.costPerMonth = costPerMonth;
+    public  TopUp getTopUpByName(String name)
+    {
+        switch(name)
+        {
+            case "FOUR_DEVICE":
+                return new TopUp("FOUR",50,0);
+            case "TEN_DEVICE":
+                return new TopUp("TEN",100,0);
+            default:
+                return null;
+        }
     }
 
     public TopUp(String topUpName, int costPerMonth,int durationInMonth) {
@@ -22,12 +27,9 @@ public class TopUp {
         this.costPerMonth = costPerMonth;
         this.durationInMonth=durationInMonth;
     }
-    public int getDurationInMonth() {
-        return durationInMonth;
-    }
+    public TopUp()
+    {
 
-    public void setDurationInMonth(int durationInMonth) {
-        this.durationInMonth = durationInMonth;
     }
 
     public int getTotalCost()
@@ -35,12 +37,12 @@ public class TopUp {
         return this.getCostPerMonth()*this.durationInMonth;
     }
 
-    private String topUpName;
-    private int costPerMonth;
+    private  String topUpName=null;
+    private  int costPerMonth=0;
 
 
 
-    private int durationInMonth;
+    private int durationInMonth=0;
 
 
 }
